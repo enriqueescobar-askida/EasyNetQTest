@@ -1,14 +1,14 @@
-﻿using System;
-using EasyNetQ;
-using Messages;
-
-namespace Subscriber
+﻿namespace Subscriber
 {
+    using System;
+    using EasyNetQ;
+    using Messages;
+
     class Program
     {
         static void Main(string[] args)
         {
-            using (var bus = RabbitHutch.CreateBus("host=localhost"))
+            using (IBus bus = RabbitHutch.CreateBus("host=localhost"))
             {
                 bus.Subscribe<TextMessage>("test", HandleTextMessage);
 

@@ -1,16 +1,16 @@
-﻿using System;
-using EasyNetQ;
-using Messages;
-
-namespace Publisher
+﻿namespace Publisher
 {
+    using System;
+    using EasyNetQ;
+    using Messages;
+
     class Program
     {
         static void Main(string[] args)
         {
-            using (var bus = RabbitHutch.CreateBus("host=localhost"))
+            using (IBus bus = RabbitHutch.CreateBus("host=localhost"))
             {
-                var input = "";
+                string input = "";
                 Console.WriteLine("Enter a message. 'q' to quit.");
                 while ((input = Console.ReadLine()) != "q")
                 {
